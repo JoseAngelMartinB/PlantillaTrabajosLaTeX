@@ -4,5 +4,4 @@ Este es un ejemplo de una plantilla hecha con LaTeX para la realización de trab
 -----------------------------
 Esta plantilla ha sido creada por José Ángel Martín Baos.
 
-Esta obra está bajo una licencia de Creative Commons Reconocimento-CompartirIgual 4.0 Internacional.
-https://creativecommons.org/licenses/by-sa/4.0/
+Esta obra está bajo una licencia [GNU General Public License Versión 3](LICENSE.txt).
