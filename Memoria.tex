@@ -1,40 +1,47 @@
-%	Memoria para trabajos y entregas de laboratorio de la ESI
-%		(Escuela Superior de Informática) de Ciudad Real, UCLM.
-%	Versión: Junio - 2017
-%	Desarrollada por José Ángel Martín Baos y basada en:
-%		- Plantilla de la Universidad de Cape Town: https://www.overleaf.com/latex/templates/uct-report-template/grctkzjtrqrm#.WVaNHnXyiV5
-%		- Contenidos del curso “LaTeX esencial para preparación de Trabajo Fin de Grado, Tesis y otros documentos académicos” impartido por el profesor Jesús Salido.
-%	Disponible en: https://github.com/JoseAngelMartinB/PlantillaTrabajosLaTeX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Memoria para trabajos y entregas de laboratorio de la Escuela Superior de    %
+% Informática (ESI) de Ciudad Real, UCLM.                                      %
+%   Versión: Octubre - 2018                                                    %
+%   Desarrollada por José Ángel Martín Baos                                    %
+%                                                                              %
+% Recursos:			                                                           %
+%   - Contenidos del curso “LaTeX esencial para preparación de Trabajo Fin de  %
+%     Grado, Tesis y otros documentos académicos” impartido por el profesor    %
+%     Jesús Salido.                                                            %
+%                                                                              %
+% Disponible en: https://github.com/JoseAngelMartinB/PlantillaTrabajosLaTeX    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[11pt]{article}
+
+% PAQUETES USADOS:
 \usepackage{natbib}
 \usepackage{url}
-\usepackage[utf8]{inputenc} % Codificación
+\usepackage[utf8]{inputenc} % Codificación (Permite carácteres españoles)
 \usepackage{amsmath}
 \usepackage{graphicx}
 \graphicspath{{images/}} % Carpeta en la cual se van a buscar las imagenes
 \usepackage{subfigure}	% Permite la Inclusión de subfiguras
-%\usepackage{parskip} % Borrar identación de parrafos.
+%\usepackage{parskip} % Suprime la identación de los parrafos.
 \setlength{\parskip}{3mm} % Longitud del espaciado entre parrafos
 \usepackage[hidelinks]{hyperref} % Referencias (links)
 \usepackage{fancyhdr}
 \usepackage{vmargin}
-\setpapersize{A4} % Formato del papel - A4
-\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm} % Margenes
 \usepackage{paralist} % Permite un mayor control sobre las listas
 \usepackage{textcomp,marvosym,pifont} % Generación de símbolos especiales
 \usepackage[usenames,dvipsnames,svgnames,x11names,table]{xcolor}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Complemento para insertar código en la memoria:
-% A partir de 'Listados de código cómodos y resultones con listings' de David Villa
-% http://crysol.org/es/node/909
+% CONFIGURACIÓN DE LA PÁGINA:
+\setpapersize{A4} % Formato del papel - A4
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm} % Margenes
 
+% Complemento para insertar código en la memoria:
+%   Basado en 'Listados de código cómodos y resultones con listings'
+%   de David Villa en http://crysol.org/es/node/909
 \usepackage{color}
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
-
 \usepackage{listings}
 \lstset{ frame=Ltb,
 	framerule=0pt,
@@ -60,8 +67,7 @@
 	numberfirstline = false,
 	breaklines=true,
 }
-
-% minimizar fragmentado de listados
+% Minimizar fragmentado de listados
 \lstnewenvironment{listing}[1][]
 {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
 
@@ -73,15 +79,14 @@
 \lstdefinestyle{C}
 {language=C,
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%OTROS PAQUETES:
 \usepackage{float} % Permite usar H en las figuras, de manera que se coloquen en la posición exacta en la que están en el código.
-
 
 % Añade un comando para crear indicaciones de pulsación de teclas
 \usepackage{tikz} % Paquete especializado en gráficos
 \usetikzlibrary{shadows} % Necesario para poder crear nuevo comando de indicación de pulsación de tecla.
-\newcommand*\tecla[1]{%   
+\newcommand*\tecla[1]{%
 	\tikz[baseline=(key.base)]
 	\node[%
 	draw,
@@ -97,21 +102,27 @@
 }
 
 \newif\ifspanish % Condicional que permite seleccionar el lenguage.
+\newif\ifmultipleauthors % Condicional que permite multiples autores
 \spanishtrue
+\multipleauthorsfalse
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%					Principales variables del documento					%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%				Principales variables del documento			   %%%%%%%%%
 
 \title{Titulo de la práctica}							% Titulo
 \author{José~Ángel~Martín~Baos}							% Autor
+%\author{Nombre~Apellido \\ \texttt{email.alumno@alu.uclm.es}} % Autor con email
+%\author{José~Ángel~Martín~Baos \\ Autor~2 \\ Autor~3}	% Multiples autores
 \date{\today}											% Fecha
 \newcommand{\subject}{Asignatura}						% Asignatura
-\newcommand{\course}{3º Ingeniería de Computadores}		% Curso
+\newcommand{\course}{Grado en Ingeniería Informática \\ 3º - Ingeniería de Computadores}	% Curso
+%\newcommand{\course}{Máster Universitario en Ingeniería Informática}	% Curso
+\newcommand{\courseyear}{2018 -- 2019} 					% Curso académico
+%\spanishfalse	    	% Descomentar esta línea si el trabajo está en inglés
+%\multipleauthorstrue   % Descomentar esta línea si hay varios autores
 
-%\spanishfalse	% Descomentar esta línea si el trabajo está en inglés
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ifspanish
 	\usepackage[spanish]{babel} % Paquete de español
@@ -132,32 +143,55 @@
 \let\thedate\@date
 \makeatother
 
-\pagestyle{fancy}
+% Formato de página:
+\pagestyle{fancy}		% Formato por defecto - Recomendado
+%\pagestyle{headings} 	% Formato para libros
 \fancyhf{}
-\rhead{\theauthor}
-\lhead{\thetitle}
+\ifmultipleauthors
+	\chead{\thetitle}
+\else
+	\rhead{\theauthor}
+	\lhead{\thetitle}
+\fi
 \cfoot{\thepage}
 
 \begin{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%								Portada									%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%							Portada							   %%%%%%%%%
 
 \begin{titlepage}
 	\centering
-    \includegraphics[scale = 0.40]{uclm_logo.pdf}\\[1.0 cm]	% Logo de la universidad
-    \includegraphics[scale = 0.25]{esi.pdf}\\[1.0 cm]
+	\begin{minipage}[t]{\textwidth}
+		\raisebox{-0.5\height}{\includegraphics[scale = 0.8]{UCLM_Logo.pdf}} 	% Logo de la universidad
+		\hspace{\fill}
+		\raisebox{-0.5\height}{\includegraphics[scale = 0.24]{esi.pdf}}
+	\end{minipage}
+	\\[2.25 cm]
     \textsc{\LARGE Universidad de Castilla-La Mancha}\\[0.5 cm]	% Nombre de la universidad
     \textsc{\LARGE Escuela Superior de Informática}\\[2.0 cm]
 	\textsc{\Large \subject}\\[0.5 cm]				% Asignatura
-	\textsc{\large \course}\\[0.5 cm]						% Curso
+	\textsc{\large \course \\ \courseyear}\\[2 cm]				% Curso
 	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
 	{ \huge \bfseries \thetitle}\\
-	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
-	
+	\rule{\linewidth}{0.2 mm} \\[2.5 cm]
+
+	\vspace*{\fill}
 	\begin{minipage}{0.4\textwidth}
 		\begin{flushleft} \large
-			\emph{Autor:}\\
+			\ifspanish
+				\ifmultipleauthors
+					\emph{Autores:}\\
+				\else
+					\emph{Autor:}\\
+				\fi
+			\else
+				\ifmultipleauthors
+					\emph{Authors:}\\
+				\else
+					\emph{Author:}\\
+				\fi
+			\fi
 			\theauthor
 			\end{flushleft}
 			\end{minipage}~
@@ -166,34 +200,33 @@
 			\emph{\dateText} \\
 			\thedate
 		\end{flushright}
-	\end{minipage}\\[1.5 cm]
- 
-	\vfill
-	
+	\end{minipage}\\[2.25 cm]
+
+
 \end{titlepage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%								Índice									%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%						   	Índice					      	   %%%%%%%%%
 
 \tableofcontents
 \pagebreak
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%								Documento								%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%							Documento						   %%%%%%%%%
 
 % Sección: Intruducción
 \section{Introducción}
-Este es un ejemplo de una plantilla hecha con \LaTeX{} para la realización de trabajos y entregas de laboratorio de la ESI (Escuela Superior de Informática) de Ciudad Real, Universidad de Castilla-La Mancha. 
+Este es un ejemplo de una plantilla hecha con \LaTeX{} para la realización de trabajos y entregas de laboratorio de la ESI (Escuela Superior de Informática) de Ciudad Real, Universidad de Castilla-La Mancha.
 
 En la plantilla se han concentrado todas las características de \LaTeX{} que pueden ser requeridas cuando se realiza un trabajo. Se recomienda el uso del editor TeXstudio y un Sistema Operativo basado en GNU/Linux. La plantilla puede usarse tanto para trabajos en Español como en Inglés (en cuyo caso hay que descomentar la variable \emph{spanishfalse}).
 
 Esta plantilla ha sido creada por \href{https://github.com/JoseAngelMartinB}{José Ángel Martín Baos}. Está basada en la plantilla de la Universidad de Cape Town: \url{https://www.overleaf.com/latex/templates/uct-report-template/grctkzjtrqrm#.WVTJsXXyiV4} además de en los contenidos del curso “\LaTeX{} esencial para preparación de Trabajo Fin de Grado, Tesis y otros documentos académicos” impartido por el profesor Jesús Salido: \url{http://visilab.etsii.uclm.es/?page_id=1468}.
 
-\begin{figure}[H] 
+\begin{figure}[H]
 	\centering
 	\includegraphics[angle=0]{licencia}
-\end{figure}	
+\end{figure}
 Esta obra está bajo una licencia GNU General Public License Versión 3.
 \url{https://github.com/JoseAngelMartinB/PlantillaTrabajosLaTeX/blob/master/LICENSE.txt}
 
@@ -238,7 +271,7 @@ Aunque también pueden expresarse así:
 \sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}
 \end{equation*}
 
-Y posteriormente hacer referencia a dicha ecuación: Ecuación \ref{eq:equation1}.
+Y posteriormente hacer referencia a dicha ecuación: Ecuación (\ref{eq:equation1}).
 
 Se recomienda el uso de la herramienta Daumc Equation Editor (disponible en: \url{http://s1.daumcdn.net/editor/fp/service_nc/pencil/Pencil_chromestore.html}) para escribir ecuaciones en \LaTeX{} de manera trivial.
 
@@ -269,10 +302,10 @@ $ sudo apt-get install texlive-science
 	\SetKwInOut{Input}{Datos}\SetKwInOut{Output}{Resultado}
 	\LinesNumbered
 	\SetAlgoLined
-	
-	\Input{Matrices A y B, lado de la grilla de procesos (m), fila del proceso (i), columna del proceso (j)} 
+
+	\Input{Matrices A y B, lado de la grilla de procesos (m), fila del proceso (i), columna del proceso (j)}
 	\Output{Matriz C}
-	
+
 	\For{k = 0 to m-1}{
 		\eIf{j == ((i + k) mod m)}{
 			Broadcast $A_{ij}$ a los procesos de la misma fila (i)\;
@@ -284,7 +317,7 @@ $ sudo apt-get install texlive-science
 		Send $B_{ij}$ al proceso $t_{(i-1) j}$\;
 		Receive $B_{ij}$ del proceso $t_{(i+1) j}$\;
 	}
-	
+
 	\caption{Algoritmo de Fox}\label{alg:fox}
 \end{algorithm}\DecMargin{1em}
 
@@ -296,7 +329,7 @@ Para insertar imágenes (figuras) podemos usar los siguientes comandos, ya sea u
 	\includegraphics[width=1\linewidth,angle=0]{PlazaCR}
 	\caption{Plaza de Ciudad Real}
 	\label{fig:PlazaCR}
-\end{figure}	
+\end{figure}
 
 % Dos subimagenes
 \begin{figure}[htb]
@@ -324,7 +357,7 @@ El primer ejemplo consiste en un listado normal:
 	\item Item 1
 	\item Item 2
 	\item[\ding{108}] Se puede cambiar de icono usando ding. Consultar ChuLaTeX \cite{Salido2011}
-	\item[*] Item 4 
+	\item[*] Item 4
 \end{itemize}
 
 El segundo de un listado numerado:
@@ -369,7 +402,7 @@ Es posible introducir tablas en \LaTeX{}. Aquí se puede ver un pequeño ejemplo
 
 % Sección: Referencias
 \section{Añadir referencias}
-Para el manejo de las referencias se recomienda la instalación de JabRef disponible en: \url{http://www.jabref.org/}. Mediante esta aplicación abrimos el archivo \emph{biblist.bib}. Mediante la aplicación introducimos las distintas referencias que queramos y a cada una le asignamos una bibtexkey que sea significativa para nosotros y no se repita. 
+Para el manejo de las referencias se recomienda la instalación de JabRef disponible en: \url{http://www.jabref.org/}. Mediante esta aplicación abrimos el archivo \emph{biblist.bib}. Mediante la aplicación introducimos las distintas referencias que queramos y a cada una le asignamos una bibtexkey que sea significativa para nosotros y no se repita.
 
 Por último podemos citar libros o artículos mediante el comando cite. \cite{Kottwitz2011} \cite{Martin2017} \cite{Salido2011}. En este comando ponemos la bibtexkey que indica la referencia que queremos introducir.
 
@@ -380,16 +413,16 @@ Puedes ayudar al desarrollo de esta plantilla aportando tus ideas, mejoras o sug
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%% 							BIBLIOGRAFIA 								%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% 						BIBLIOGRAFIA 						   %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \bibliography{biblist}
 \bibliographystyle{plain}
 %\nocite{*} Permite citar todas las referencias en el archivo .bib
 
 % Añadir la bibliografía al Índice de contenidos
-\ifspanish 
+\ifspanish
 	\addcontentsline{toc}{section}{Referencias}
 \else
 	\addcontentsline{toc}{section}{References}
@@ -397,9 +430,9 @@ Puedes ayudar al desarrollo de esta plantilla aportando tus ideas, mejoras o sug
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%% 						Atribución - ¡No Eliminar!						%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% 					Atribución - ¡No Eliminar!				   %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \null\vfill
 \begin{center}
 \ifspanish
@@ -407,8 +440,8 @@ Puedes ayudar al desarrollo de esta plantilla aportando tus ideas, mejoras o sug
 	desarrollada por \textsc{José Ángel Martín Baos} y disponible en\\
 	\url{https://github.com/JoseAngelMartinB/PlantillaTrabajosLaTeX}
 \else
-	This document has been generated with \LaTeX{} using the template\\
-	developed by \textsc{José Ángel Martín Baos} and available in\\
+	This document was generated using \LaTeX{} and the template\\
+	developed by \textsc{José Ángel Martín Baos} which is available in\\
 	\url{https://github.com/JoseAngelMartinB/PlantillaTrabajosLaTeX}
 \fi
 \end{center}
